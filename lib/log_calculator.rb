@@ -41,9 +41,14 @@ module LogCalculator
 
     private
     def business_hours
-      start_integer = Time.new(@start.year, @start.month, @start.day, 8, 0, 0, @start.gmt_offset).to_i
-      finish_integer = Time.new(@start.year, @start.month, @start.day, 17, 0, 0, @start.gmt_offset).to_i
-      (start_integer..finish_integer).to_a
+      (business_day(@start.year, @start.month, @start.day, @start.gmt_offset) +
+        business_day(@finish.year, @finish.month, @finish.day, @finish.gmt_offset)).uniq
+    end
+
+    def business_day(year, month, day, offset)
+      beginning_of_day = Time.new(year, month, day, 8, 0, 0, offset).to_i
+      end_of_day = Time.new(year, month, day, 17, 0, 0, offset).to_i
+      (beginning_of_day..end_of_day).to_a
     end
 
     def labor_hours
