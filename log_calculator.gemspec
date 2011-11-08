@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["dogenpunk"]
   s.email       = ["dogenpunk@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Calculate costs based on Rate and Time}
+  s.description = s.summary
 
   s.rubyforge_project = "log_calculator"
 
@@ -19,6 +19,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_development_dependency "rspec", "~> 2.7"
+  s.add_development_dependency "simplecov", "~> 0.5"
+  s.add_development_dependency "rake", "~> 0.9"
+  s.add_development_dependency "ZenTest"
+  s.add_runtime_dependency "money", "~> 3.7"
 end
