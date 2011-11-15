@@ -1,4 +1,5 @@
 require "log_calculator/version"
+require 'bigdecimal'
 
 module LogCalculator
   class Calculator
@@ -57,6 +58,18 @@ module LogCalculator
   end
 
   class Rates
-    attr_reader :first_hour, :additional_hours
+    attr_writer :first_hour, :second_hour,
+      :first_emergency_hour, :second_emergency_hour
+
+    def initialize
+      @first_hour, @second_hour = "0.00", "0.00"
+      @first_emergency_hour, @second_emergency_hour = "0.00", "0.00"
+    end
+    
+    %w(first_hour second_hour first_emergency_hour second_emergency_hour).each do |method|
+      define_method(method) do
+        BigDecimal.new(instance_variable_get("@#{method}") || "")
+      end
+    end
   end
 end
