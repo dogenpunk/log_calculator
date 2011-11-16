@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'time'
 
 describe LogCalculator::Hours do
   describe ".new" do

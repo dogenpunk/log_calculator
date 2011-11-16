@@ -1,5 +1,6 @@
 require "log_calculator/version"
 require 'bigdecimal'
+require 'time'
 
 module LogCalculator
   class Calculator
