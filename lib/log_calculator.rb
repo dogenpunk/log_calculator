@@ -21,10 +21,8 @@ module LogCalculator
     attr_reader :start, :finish
 
     def initialize(args={})
-      start_time = args[:start]
-      end_time = args[:finish]
-      @start = Time.parse(start_time) unless start_time.nil?
-      @finish = Time.parse(end_time) unless end_time.nil?
+      @start = Time.parse(args[:start]) unless args[:start].nil?
+      @finish = Time.parse(args[:finish]) unless args[:finish].nil?
     end
 
     def total
